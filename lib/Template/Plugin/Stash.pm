@@ -37,7 +37,7 @@ L<Template::Plugin::Dumper|Template::Plugin::Dumper>.
 
 To report bugs, go to
 E<lt>http://rt.cpan.org/NoAuth/Bugs.html?Dist=Template-Plugin-StashE<gt>
-or send mail to E<lt>Template-Plugin-Stash#rt.cpan.orgE<gt>.
+or send mail to E<lt>bug-Template-Plugin-Stash#rt.cpan.orgE<gt>.
 
 =head1 LICENSE
 
@@ -53,7 +53,7 @@ package Template::Plugin::Stash;
 use strict;
 use base qw[ Template::Plugin ];
 use vars '$VERSION';
-$VERSION = sprintf "%d.%03d", q$Revision: 1.4 $ =~ /(\d+).(\d+)/g;
+$VERSION = sprintf "%d.%03d", q$Revision: 1.5 $ =~ /(\d+).(\d+)/g;
 
 
 sub new {
