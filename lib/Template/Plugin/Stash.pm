@@ -15,7 +15,7 @@ to get at the stash, simply C<< [% USE Stash %] >>.
 
 Output will look something like
 
-    $VAR1 = bless( {
+    $VAR1 = {
         'global' => {},
         'var1' => 6666666,
         'var2' => {
@@ -24,7 +24,7 @@ Output will look something like
         'a' => 'b',
         'c' => 'd'
         },
-    }, 'Template::Stash::XS' );
+    };
 
 which should be all you need.
 
@@ -33,9 +33,9 @@ which should be all you need.
 L<Template::Plugin|Template::Plugin>,
 L<Template::Plugin::Dumper|Template::Plugin::Dumper>.
 
-=head1 BUGS
+=head1 BUGS/SUGGESTIONS/ETC
 
-To report bugs, go to
+To report bugs/suggestions/etc, go to
 E<lt>http://rt.cpan.org/NoAuth/Bugs.html?Dist=Template-Plugin-StashE<gt>
 or send mail to E<lt>bug-Template-Plugin-Stash#rt.cpan.orgE<gt>.
 
@@ -53,7 +53,7 @@ package Template::Plugin::Stash;
 use strict;
 use base qw[ Template::Plugin ];
 use vars '$VERSION';
-$VERSION = sprintf "%d.%03d", q$Revision: 1.5 $ =~ /(\d+).(\d+)/g;
+$VERSION = sprintf "%d.%03d", q$Revision: 1.6 $ =~ /(\d+).(\d+)/g;
 
 
 sub new {
@@ -63,7 +63,7 @@ sub new {
 
 sub stash {
     my $self = shift;
-    my $stash = $self->{_CONTEXT}->stash()->clone();
+    my $stash = { %{ $self->{_CONTEXT}->stash() } }; # do clone as Template::Stash does it
 
     delete $stash->{$_}
         for
